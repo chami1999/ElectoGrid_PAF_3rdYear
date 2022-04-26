@@ -14,7 +14,7 @@ public class Payment {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 
-			con = DriverManager.getConnection("jdbc:mysql://localhost:8081/gadgetbadget", "root", "");
+			con = DriverManager.getConnection("jdbc:mysql://localhost:8080/electrogrid", "root", "");
 			// For testing
 			System.out.print("Successfully connected");
 		} catch (Exception e) {
@@ -24,7 +24,7 @@ public class Payment {
 		return con;
 	}
 
-	// insert method
+	// insert 
 	public String insertPayment(String date, String number, String amount, String type) {
 		Connection con = connect();
 		String output = "";
@@ -58,7 +58,7 @@ public class Payment {
 		return output;
 	}
 
-	// read method
+	// read 
 	public String readPayments() {
 		String output = "";
 		try {
@@ -82,6 +82,7 @@ public class Payment {
 				String PaymentType = rs.getString("PaymentType");
 
 				// Add into the html table
+				output += "<tr><td>" + PaymentID + "</td>";
 				output += "<tr><td>" + PaymentDate + "</td>";
 				output += "<td>" + CardNumber + "</td>";
 				output += "<td>" + Amount + "</td>";
